@@ -1,0 +1,16 @@
+.main {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+
+    background-color: var(--sidebar-bg);
+}
+
+.link {
+    width: 100%;
+    padding: 1rem;
+    border-radius: .2rem;
+
+    background-color: var(--sidebar-link-bg);
+    cursor: pointer;
+}

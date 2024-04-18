@@ -1,0 +1,38 @@
+.headerContainer {
+    border: 1px solid magenta;
+
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    place-content: end;
+    place-items: center;
+}
+
+.headerContainer>svg {
+    cursor: pointer;
+}
+
+.headerContainer>svg:hover {
+    animation: notificationRing .7s linear;
+}
+
+@keyframes notificationRing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(40deg);
+    }
+
+    50% {
+        transform: rotate(-40deg);
+    }
+
+    75% {
+        transform: rotate(20deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
