@@ -15,7 +15,12 @@ export default function DashboardHeader() {
                 name="Adicionar"
                 type="button"
             />
-            <IoIosNotificationsOutline size={25} />
+
+            <div className={styles.notificationContainer}>
+                <IoIosNotificationsOutline size={30} />
+                <div className={styles.newNotificationCircle}></div>
+            </div>
+
             <ProfileIcon />
         </div>
     )

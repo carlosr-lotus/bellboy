@@ -3,7 +3,12 @@
     height: 100%;
     padding: 1rem;
 
-    background-color: var(--sidebar-bg);
+    background-color: var(--dark-background);
+}
+
+.linksContainer {
+    display: grid;
+    gap: 1rem;
 }
 
 .link {
@@ -11,6 +16,9 @@
     padding: 1rem;
     border-radius: .2rem;
 
-    background-color: var(--sidebar-link-bg);
+    background-color: var(--link-background);
     cursor: pointer;
+
+    display: flex;
+    justify-content: center;
 }

@@ -1,6 +1,17 @@
+/* Mobile first */
 .appContainer {
   height: 100vh;
 
   display: grid;
-  grid-template-columns: .20fr .80fr;
+  grid-template-columns: 20% 80%;
 }
+
+.dashboardContainer {
+  padding: 2rem;
+}
+
+/* @media (min-width: 1024px) {
+  .appContainer {
+    grid-template-columns: 20% 80%;
+  }
+} */

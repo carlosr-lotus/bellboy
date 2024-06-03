@@ -1,18 +1,38 @@
 .headerContainer {
-    border: 1px solid magenta;
+    /* border: 1px solid magenta; */
 
     display: grid;
+    gap: 2rem;
     grid-template-columns: repeat(3, max-content);
     place-content: end;
     place-items: center;
 }
 
-.headerContainer>svg {
+.notificationContainer {
+    position: relative;
+}
+
+.notificationContainer>svg {
     cursor: pointer;
 }
 
-.headerContainer>svg:hover {
+.notificationContainer>svg:hover {
     animation: notificationRing .7s linear;
+}
+
+.notificationContainer>svg:hover .newNotificationCircle {
+    animation: notificationRing .7s linear;
+}
+
+.newNotificationCircle {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+
+    width: .7rem;
+    height: .7rem;
+    border-radius: 100%;
+    background-color: red;
 }
 
 @keyframes notificationRing {
