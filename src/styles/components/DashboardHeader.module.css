@@ -3,9 +3,16 @@
 
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: 1fr repeat(2, max-content);
     place-content: end;
     place-items: center;
+}
+
+/* style for button */
+.headerContainer>div:nth-child(1) {
+    width: fit-content;
+    place-self: start;
+    align-self: center;
 }
 
 .notificationContainer {
@@ -54,5 +61,18 @@
 
     100% {
         transform: rotate(0deg);
+    }
+}
+
+@media (min-width: 810px) {
+    .headerContainer {
+        grid-template-columns: repeat(3, max-content);
+    }
+    
+    /* style for button */
+    .headerContainer>div:nth-child(1) {
+        width: 100%;
+        place-self: auto;
+        align-self: auto;
     }
 }

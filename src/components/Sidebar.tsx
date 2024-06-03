@@ -7,7 +7,7 @@ import styles from '@/styles/components/Sidebar.module.css'
 export default function Sidebar(): JSX.Element {
     return (
         <div className={styles.main}>
-            <h1>Bellboy</h1>
+            <h1>logo</h1>
 
             <div className={styles.linksContainer}>
                 <div className={styles.link}>
