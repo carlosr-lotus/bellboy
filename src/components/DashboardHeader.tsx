@@ -1,5 +1,6 @@
 // Components
 import Button from "@/material/Button"
+import ProfileIcon from "@/components/ProfileIcon";
 
 // Icons
 import { IoIosNotificationsOutline } from "react-icons/io";
@@ -15,6 +16,7 @@ export default function DashboardHeader() {
                 type="button"
             />
             <IoIosNotificationsOutline size={25} />
+            <ProfileIcon />
         </div>
     )
 }

@@ -1,0 +1,6 @@
+.container {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    background-color: var(--sidebar-bg);
+}
