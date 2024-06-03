@@ -8,6 +8,10 @@
 
 .dashboardContainer {
   padding: 2rem;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 /* @media (min-width: 1024px) {
