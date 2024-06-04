@@ -4,10 +4,15 @@
     padding: 1rem;
 
     background-color: var(--dark-background);
+
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: 10% 90%;
 }
 
 .linksContainer {
     display: grid;
+    grid-template-rows: repeat(2, max-content);
     gap: 1rem;
 }
 
