@@ -14,8 +14,14 @@
   gap: 3rem;
 }
 
-/* @media (min-width: 1024px) {
-  .appContainer {
-    grid-template-columns: 20% 80%;
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .services {
+    flex-direction: row;
   }
-} */
+}
