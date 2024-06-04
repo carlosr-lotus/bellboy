@@ -6,6 +6,11 @@
   --dark-background: #F0F0F0;
   --link-background: #D6D6D6;
   
+  --Netflix-Color: #E50914;
+
+  --Status-Green: #9CDD75;
+  --Status-Red: #F25A46;
+  
   /* 1rem = 10px */
   font-size: 62.5%;
 }
