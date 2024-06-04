@@ -1,0 +1,70 @@
+.container {
+    padding: 1rem;
+    background-color: var(--dark-background);
+    border-radius: .3rem;
+
+    display: grid;
+    grid-template-columns: repeat(2, max-content) 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container:hover {
+    outline: 1px solid var(--link-background);
+}
+
+.icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: .1rem;
+    border-radius: .3rem;
+}
+
+.name {
+    font-size: 1.2rem;
+}
+
+.statusCircle,
+.subStatusCircle {
+    width: 1.2rem;
+    height: 1.2rem;
+
+    border-radius: 100%;
+
+    place-self: end;
+    align-self: center;
+
+    display: flex;
+    justify-content: center;
+}
+    
+
+.subStatusCircle {
+    padding: 1rem;
+    animation-name: breath-animation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.statusCircleTrue,
+.statusCircleTrue > .subStatusCircle {
+    background-color: var(--Status-Green);
+}
+
+.statusCircleFalse,
+.statusCircleFalse > .subStatusCircle {
+    background-color: var(--Status-Red);
+}
+
+@keyframes breath-animation {
+    0% { padding: 0rem; }
+    30% { padding: .4rem; opacity: 1 }
+    40% { padding: .8rem; opacity: 0.3; }
+    100% { padding: 1.6rem; opacity: 0; }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: 20rem;
+  }
+}
