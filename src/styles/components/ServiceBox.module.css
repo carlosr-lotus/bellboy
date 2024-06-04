@@ -59,7 +59,8 @@
 @keyframes breath-animation {
     0% { padding: 0rem; }
     30% { padding: .4rem; opacity: 1 }
-    40% { padding: .8rem; opacity: 0.3; }
+    40% { padding: .8rem; opacity: 0.7; }
+    70% { padding: 1.2rem; opacity: 0.5; }
     100% { padding: 1.6rem; opacity: 0; }
 }
 
