@@ -1,52 +1,53 @@
-'use client'
-// import Image from "next/image";
-import { Fragment, useState } from "react";
+"use client";
 
 // Components
-import Sidebar from "@/components/Sidebar";
-import DashboardHeader from "@/components/DashboardHeader";
-import DashSectionTitle from "@/components/DashSectionTitle";
-import ServiceBox from "@/components/ServiceBox";
-
-// Types
-import { ServiceProps } from "@/components/ServiceBox";
+import Button from "@/material/Button";
+import InputField from "@/material/InputField";
 
 import styles from "./page.module.css";
 
 export default function Home() {
-
-  const servicesData = [
-    { id: 1, icon: '', name: 'Netflix', color: '#E50914', status: true },
-    { id: 2, icon: '', name: 'Max', color: '#941DE8', status: true },
-    { id: 3, icon: '', name: 'Prime', color: '#1399FF', status: false }
-  ]
-
-  const [services, setServices] = useState<ServiceProps[]>(servicesData)
-
   return (
-    <main className={styles.appContainer}>
-      <Sidebar />
-
-      <div className={styles.dashboardContainer}>
-        <DashboardHeader />
-        <DashSectionTitle />
-        
-        <div className={styles.services}>
-          {services &&
-            services.map((service) => (
-              <Fragment key={service.id}>
-                <ServiceBox 
-                  id={service.id}
-                  icon=""
-                  name={service.name}
-                  color={service.color}
-                  status={service.status}
-                />
-              </Fragment>
-            ))
-          }
-        </div>
+    <main className={styles.container}>
+      <h1 style={{ textAlign: "center" }}>LOGO</h1>
+      <div className={styles.header}>
+        <h1>Welcome back!</h1>
+        <p>Good to see you again! How may I be of service?</p>
       </div>
+
+      <div className={styles.inputContainer}>
+        <label>Email</label>
+        <InputField
+          name="email"
+          placeholder="Your email.."
+          type="text"
+          register={() => {}}
+          style={{
+            borderRadius: "10px",
+            padding: "1.5rem",
+          }}
+        />
+      </div>
+
+      <div className={styles.inputContainer}>
+        <label>Password</label>
+        <InputField
+          name="password"
+          placeholder="Your password.."
+          type="password"
+          register={() => {}}
+          style={{
+            borderRadius: "10px",
+            padding: "1.5rem",
+          }}
+        />
+        <span>Forgot Password?</span>
+      </div>
+
+      <Button name="LOGIN" type="button" className={styles.loginButton} />
+      <span className={styles.signUpLink}>
+        Don’t have an account? <strong>Sign up for free</strong>
+      </span>
     </main>
   );
 }
