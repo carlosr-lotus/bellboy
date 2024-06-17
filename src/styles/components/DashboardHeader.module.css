@@ -1,6 +1,4 @@
 .headerContainer {
-    /* border: 1px solid magenta; */
-
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr repeat(2, max-content);
@@ -68,7 +66,7 @@
     .headerContainer {
         grid-template-columns: repeat(3, max-content);
     }
-    
+
     /* style for button */
     .headerContainer>div:nth-child(1) {
         width: 100%;
