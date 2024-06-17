@@ -1,14 +1,28 @@
 "use client";
 
+// Packages
+import { useForm, SubmitHandler } from "react-hook-form";
+
 // Components
 import Button from "@/material/Button";
 import InputField from "@/material/InputField";
 
 import styles from "./page.module.css";
 
+type LogInT = {
+  email: string;
+  password: string;
+};
+
 export default function Home() {
+  const { register, handleSubmit } = useForm<LogInT>();
+
+  function logIn(data: LogInT) {
+    console.log(data);
+  }
+
   return (
-    <main className={styles.container}>
+    <main className={styles.container} onSubmit={handleSubmit(logIn)}>
       <form className={styles.form}>
         <h1 style={{ textAlign: "center" }}>LOGO</h1>
         <div className={styles.header}>
@@ -22,10 +36,11 @@ export default function Home() {
             name="email"
             placeholder="Your email.."
             type="text"
-            register={() => {}}
+            register={register}
+            required
             style={{
               borderRadius: "10px",
-              padding: "1.5rem",
+              padding: "2rem",
             }}
           />
         </div>
@@ -36,16 +51,17 @@ export default function Home() {
             name="password"
             placeholder="Your password.."
             type="password"
-            register={() => {}}
+            register={register}
+            required
             style={{
               borderRadius: "10px",
-              padding: "1.5rem",
+              padding: "2rem",
             }}
           />
           <span>Forgot Password?</span>
         </div>
 
-        <Button name="LOGIN" type="button" className={styles.loginButton} />
+        <Button name="LOGIN" type="submit" className={styles.loginButton} />
         <span className={styles.signUpLink}>
           Don’t have an account? <strong>Sign up for free</strong>
         </span>
