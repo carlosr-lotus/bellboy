@@ -1,0 +1,27 @@
+/* Mobile first */
+.appContainer {
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.dashboardContainer {
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .services {
+        flex-direction: row;
+    }
+}

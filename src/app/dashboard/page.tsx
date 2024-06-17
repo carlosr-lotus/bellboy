@@ -11,7 +11,8 @@ import ServiceBox from "@/components/ServiceBox";
 // Types
 import { ServiceProps } from "@/components/ServiceBox";
 
-import styles from "../page.module.css";
+// import styles from "../page.module.css";
+import styles from "@/styles/pages/DashboardPage.module.css";
 
 export default function DashboardPage() {
   const servicesData = [
