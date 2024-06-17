@@ -3,7 +3,7 @@
     font-size: 1.2rem;
 }
 
-.container > form {
+.form {
     padding: 2rem;
     display: grid;
     gap: 2rem;
@@ -41,7 +41,7 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    .container > form {
+    .form {
         padding: 5rem;
         width: 80%;
         margin: 0 auto;
@@ -54,13 +54,13 @@
 }
 
 @media (min-width: 1336px) {
-    .container > form {
+    .form {
         width: 70%;
     }
 }
 
 @media (min-width: 1920px) {
-    .container > form {
+    .form {
         width: 60%;
     }
 }

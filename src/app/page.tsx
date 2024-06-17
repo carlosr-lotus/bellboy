@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <main className={styles.container}>
-      <form>
+      <form className={styles.form}>
         <h1 style={{ textAlign: "center" }}>LOGO</h1>
         <div className={styles.header}>
           <h1>Welcome back!</h1>
