@@ -8,5 +8,9 @@
     width: 1.5rem;
     height: 2.5rem;
     background-color: var(--link-background);
-    border-radius: .3rem;
+    border-radius: 0.3rem;
+}
+
+.title {
+    font-weight: normal;
 }
