@@ -16,8 +16,6 @@
 }
 
 .link {
-    /* width: 4rem; */
-    /* height: 4rem; */
     margin: 0 auto;
     padding: 1.2rem;
     border-radius: 100%;
@@ -99,12 +97,5 @@
 
     100% {
         transform: rotate(360deg);
-    }
-}
-
-@media (min-width: 800px) {
-    .link {
-        /* width: 5rem; */
-        /* height: 5rem; */
     }
 }
