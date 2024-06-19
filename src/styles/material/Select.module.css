@@ -1,0 +1,100 @@
+.selectContainer {
+    position: relative;
+
+    padding: 2rem;
+    width: 100%;
+    min-height: 1.5rem;
+
+    border: 0.1rem solid var(--dark-background);
+    border-radius: 10px;
+    outline: none;
+
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.selectContainer:focus {
+    border-color: var(--color-focus);
+}
+
+.value {
+    font-size: 1.3rem;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.clearBtn {
+    padding: 0;
+
+    background-color: transparent;
+    color: #acacac;
+
+    border: none;
+    outline: none;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+}
+
+.clearBtn:focus,
+.clearBtn:hover {
+    color: #1c1212;
+}
+
+.divider {
+    align-self: stretch;
+    width: 1px;
+    margin: 0 0.5rem;
+    background-color: #acacac;
+}
+
+.caret {
+    translate: 0 25%;
+    border: 0.4rem solid transparent;
+    border-top-color: #acacac;
+}
+
+.options {
+    position: absolute;
+
+    margin: 0;
+    padding: 0;
+    /* padding: 1.2rem; */
+    width: 100%;
+
+    left: 0;
+    top: calc(100% + 0.4rem);
+
+    display: none;
+
+    max-height: 15rem;
+    overflow-y: auto;
+
+    border: 0.1rem solid #acacac;
+    border-radius: 4px;
+
+    background-color: white;
+
+    z-index: 100;
+}
+
+.options.show {
+    display: block;
+}
+
+.option {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #9b9b9b;
+}
+
+.highlighted {
+    background-color: #dbdbdb;
+}
