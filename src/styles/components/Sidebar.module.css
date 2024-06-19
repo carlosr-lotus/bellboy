@@ -16,9 +16,10 @@
 }
 
 .link {
-    width: 4rem;
-    height: 4rem;
+    /* width: 4rem; */
+    /* height: 4rem; */
     margin: 0 auto;
+    padding: 1.2rem;
     border-radius: 100%;
 
     background-color: var(--link-background);
@@ -103,7 +104,7 @@
 
 @media (min-width: 800px) {
     .link {
-        width: 5rem;
-        height: 5rem;
+        /* width: 5rem; */
+        /* height: 5rem; */
     }
 }
