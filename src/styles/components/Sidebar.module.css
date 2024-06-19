@@ -6,7 +6,6 @@
     background-color: var(--dark-background);
 
     display: grid;
-    gap: 1rem;
     grid-template-rows: 10% 90%;
 }
 
@@ -39,6 +38,10 @@
 
 .linksContainer > .link:nth-child(1) > svg {
     fill: #f1f1f1;
+}
+
+.link:last-child {
+    place-self: end;
 }
 
 .link:hover {
