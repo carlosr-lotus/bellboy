@@ -17,13 +17,87 @@
 }
 
 .link {
-    width: 100%;
-    padding: 1rem;
-    border-radius: .2rem;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto;
+    /* padding: 1rem; */
+    border-radius: 100%;
 
     background-color: var(--link-background);
     cursor: pointer;
 
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+/* development only */
+.linksContainer > .link:nth-child(1) {
+    background-color: #b200b2;
+}
+
+.linksContainer > .link:nth-child(1) > svg {
+    fill: #f1f1f1;
+}
+
+/* classes for each icon animation */
+.link:hover .scaling {
+    animation-name: scaling;
+    animation-duration: 1s;
+}
+
+.link:hover .showUp {
+    animation-name: swipe;
+    animation-duration: 2s;
+}
+
+.link:hover .rotate {
+    animation-name: rotate;
+    animation-duration: 2s;
+}
+
+/* svg icon animations */
+@keyframes scaling {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes swipe {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(40%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (min-width: 800px) {
+    .link {
+        width: 5rem;
+        height: 5rem;
+    }
 }

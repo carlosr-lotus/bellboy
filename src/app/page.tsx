@@ -1,7 +1,7 @@
 "use client";
 
 // Packages
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 // Components
 import Button from "@/material/Button";
