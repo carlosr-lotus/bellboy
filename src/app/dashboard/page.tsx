@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 // Components
 import Sidebar from "@/components/Sidebar";
@@ -10,16 +10,30 @@ import ServiceBox from "@/components/ServiceBox";
 // Types
 import { ServiceProps } from "@/components/ServiceBox";
 
+// Utils
+import { getApi } from "@/utils/api";
+
 import styles from "@/styles/pages/DashboardPage.module.css";
 
 export default function DashboardPage() {
-  const servicesData = [
-    { id: 1, icon: "", name: "Netflix", color: "#E50914", status: true },
-    { id: 2, icon: "", name: "Max", color: "#941DE8", status: true },
-    { id: 3, icon: "", name: "Prime", color: "#1399FF", status: false },
-  ];
 
-  const [services, setServices] = useState<ServiceProps[]>(servicesData);
+  const api = getApi();
+
+  const [services, setServices] = useState<ServiceProps[]>([]);
+
+  function getServices(): void {
+    api.get('/services')
+      .then((res) => {
+        setServices(res.data);
+        console.log(res.data);
+      }).catch((err) => {
+        console.log(err);
+      })
+  }
+
+  useEffect(() => {
+    getServices();
+  }, []);
 
   return (
     <main className={styles.appContainer}>
