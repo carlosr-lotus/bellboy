@@ -1,25 +1,32 @@
 {
-    "services": [
-        {
-            "id": 1,
-            "icon": "",
-            "name": "Netflix",
-            "color": "#E50914",
-            "status": true
-        },
-        {
-            "id": 2,
-            "icon": "",
-            "name": "Max",
-            "color": "#941DE8",
-            "status": true
-        },
-        {
-            "id": 3,
-            "icon": "",
-            "name": "Prime",
-            "color": "#1399FF",
-            "status": false
-        }
-    ]
+  "services": [
+    {
+      "id": 1,
+      "icon": "",
+      "name": "Netflix",
+      "color": "#E50914",
+      "status": true
+    },
+    {
+      "id": 2,
+      "icon": "",
+      "name": "Max",
+      "color": "#941DE8",
+      "status": true
+    },
+    {
+      "id": 3,
+      "icon": "",
+      "name": "Prime",
+      "color": "#1399FF",
+      "status": false
+    }
+  ],
+  "users": [
+    {
+      "id": "40a5",
+      "email": "user@email.com",
+      "password": "12345678"
+    }
+  ]
 }
