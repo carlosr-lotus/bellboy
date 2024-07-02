@@ -10,6 +10,7 @@ type ButtonProps = {
   className?: string;
   style?: CSSProperties;
   onClick?: () => any;
+  disabled?: boolean;
 };
 
 export default function Button(props: ButtonProps): JSX.Element {
@@ -20,6 +21,7 @@ export default function Button(props: ButtonProps): JSX.Element {
       ref={props.ref}
       onClick={() => (props.onClick ? props.onClick() : null)}
       style={props.style ? props.style : {}}
+      disabled={props.disabled}
     >
       {props.name}
     </button>
