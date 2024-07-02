@@ -1,13 +1,20 @@
 "use client";
+import { useState } from "react";
 
 // Packages
 import { useForm } from "react-hook-form";
+import { AxiosResponse } from "axios";
 
 // Components
 import Button from "@/material/Button";
 import InputField from "@/material/InputField";
+import Loader from "@/material/Loader"
+
+// Utils
+import { getApi } from "@/utils/api";
 
 import styles from "./page.module.css";
+import Screen from "@/material/Screen";
 
 type LogInT = {
   email: string;
@@ -16,13 +23,35 @@ type LogInT = {
 
 export default function Home() {
   const { register, handleSubmit } = useForm<LogInT>();
+  const api = getApi();
 
-  function logIn(data: LogInT) {
-    console.log(data);
+  const [isLoading, setIsLoading] = useState(false);
+
+  function logIn({ email, password }: LogInT) {
+    setIsLoading(true);
+    setTimeout(() =>
+      api.get(`/users?email=${email}&password=${password}`)
+        .then((res: AxiosResponse<LogInT[]>) => {
+          if (res.data.length > 1) {
+            console.log('User exists!')
+          }
+          setIsLoading(false);
+        }).catch((err) => {
+          setIsLoading(false);
+        })
+      , 2500);
+
   }
 
   return (
     <main className={styles.container} onSubmit={handleSubmit(logIn)}>
+      {
+        isLoading &&
+        <Screen>
+          <Loader />
+        </Screen>
+      }
+
       <form className={styles.form}>
         <h1 style={{ textAlign: "center" }}>LOGO</h1>
         <div className={styles.header}>
@@ -61,7 +90,7 @@ export default function Home() {
           <span>Forgot Password?</span>
         </div>
 
-        <Button name="LOGIN" type="submit" className={styles.loginButton} />
+        <Button name="LOGIN" type="submit" className={styles.loginButton} disabled={isLoading} />
         <span className={styles.signUpLink}>
           Don’t have an account? <strong>Sign up for free</strong>
         </span>
