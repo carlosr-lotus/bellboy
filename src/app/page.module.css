@@ -13,8 +13,9 @@
     gap: 1rem;
 }
 
-.inputContainer > span {
+.forgotPassword {
     text-align: right;
+    cursor: pointer;
 }
 
 .loginButton {
@@ -31,6 +32,7 @@
 
 .signUpLink {
     text-align: center;
+    cursor: pointer;
 }
 
 @media (min-width: 1024px) {

@@ -87,7 +87,7 @@ export default function Home() {
               padding: "2rem",
             }}
           />
-          <span>Forgot Password?</span>
+          <span className={styles.forgotPassword}>Forgot Password?</span>
         </div>
 
         <Button name="LOGIN" type="submit" className={styles.loginButton} disabled={isLoading} />
