@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 // Packages
 import { useForm } from "react-hook-form";
@@ -9,13 +9,17 @@ import { AxiosResponse } from "axios";
 import Button from "@/material/Button";
 import InputField from "@/material/InputField";
 import Loader from "@/material/Loader"
+import Modal from "@/material/Modal";
+import Screen from "@/material/Screen";
+import Select, { SelectOption } from "@/material/Select";
 
 // Utils
 import { getApi } from "@/utils/api";
 
+// Icons
+import { FaCheckCircle } from "react-icons/fa";
+
 import styles from "./page.module.css";
-import Screen from "@/material/Screen";
-import Select, { SelectOption } from "@/material/Select";
 
 type SignUpT = {
   name: string,
@@ -25,13 +29,17 @@ type SignUpT = {
 
 type LogInT = Omit<SignUpT, "name">
 
+type ForgotPassword = {
+  setModalState: Dispatch<SetStateAction<boolean>>
+}
+
 export default function Home() {
   const { register, handleSubmit } = useForm<LogInT>();
   const api = getApi();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [screen, setScreen] = useState<'logIn' | 'signUp' | 'forgotPassword'>('logIn');
-  
+  const [screen, setScreen] = useState<'logIn' | 'signUp'>('logIn');
+  const [forgotPassword, setForgotPassword] = useState(false)
 
   function logIn({ email, password }: LogInT) {
     setIsLoading(true);
@@ -45,6 +53,67 @@ export default function Home() {
     }).catch((err) => {
       setIsLoading(false);
     })
+  }
+
+  const ForgotPasswordModal = ({ setModalState }: ForgotPassword): JSX.Element => {
+
+    const [tabIndex, setTabIndex] = useState(0)
+
+    function resetPassword(email: string, password: string) {
+      api.put('/login/resetPassword', {
+        email: email,
+        password: password
+      }).then((res) => {
+        console.log(res)
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+
+    return (
+      <Screen>
+        <Modal setState={setModalState}>
+          {
+            tabIndex === 0 &&
+              <>
+                <h3>Forgot password?</h3>
+                <p>We will send a code to your email in order reset your password.</p>
+                <InputField name="email" type="text" placeholder="Your account email" register={() => {}} />
+                <Button className={styles.buttonNext} name="Send" type="button" onClick={() => setTabIndex(1)}/>
+              </>
+          } 
+
+          {
+            tabIndex === 1 &&
+              <>
+                <h3 style={{ display: 'flex', gap: '.4rem', alignItems: 'center'}}>
+                  Code sent! 
+                  <FaCheckCircle fill="var(--Status-Green)"/> 
+                </h3>
+                <p>Now insert the code that we just sent to your email.</p>
+                <InputField name="code" type="text" placeholder="Your code" register={() => {}}/>
+                <div style={{ display: 'flex', gap: '.5rem'}}>
+                  <Button className={styles.buttonBack} name="Back" type="button" onClick={() => setTabIndex(0)}/>
+                  <Button className={styles.buttonNext} name="Next" type="button" onClick={() => setTabIndex(2)}/>
+                </div> 
+              </>
+          }    
+
+          {
+            tabIndex === 2 &&
+              <>
+                <h3>Reset password</h3>
+                <p>Now insert your <b>new</b> password.</p>
+                <InputField name="newPassword" type="password" placeholder="New password" register={() => {}}/>
+                <div style={{ display: 'flex', gap: '.5rem'}}>
+                  <Button className={styles.buttonBack} name="Back" type="button" onClick={() => setTabIndex(1)}/>
+                  <Button className={styles.buttonNext} name="Create" type="button" onClick={() => resetPassword('', '')}/>
+                </div> 
+              </>
+          }
+        </Modal>
+      </Screen>
+    )
   }
 
   const SignUp = (): JSX.Element => {
@@ -156,6 +225,11 @@ export default function Home() {
       }
 
       {
+        forgotPassword &&
+          <ForgotPasswordModal setModalState={setForgotPassword} />
+      }
+
+      {
         screen === 'logIn' ?
           <form className={styles.form} onSubmit={handleSubmit(logIn)}>
             <h1 style={{ textAlign: "center" }}>LOGO</h1>
@@ -192,7 +266,7 @@ export default function Home() {
                   padding: "2rem",
                 }}
               />
-              <span className={styles.forgotPassword}>Forgot Password?</span>
+              <span className={styles.forgotPassword} onClick={() => setForgotPassword(true)}>Forgot Password?</span>
             </div>
 
             <Button name="LOGIN" type="submit" className={styles.loginButton} disabled={isLoading} />

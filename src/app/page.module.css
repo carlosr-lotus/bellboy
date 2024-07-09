@@ -45,6 +45,19 @@
     transform: translateY(-0.25em);
 }
 
+.buttonNext {
+    background-color: var(--main-app-color);
+    color: var(--main-color);
+}
+
+.buttonBack {
+    transition: .2s;
+}
+
+.buttonBack:hover {
+    background-color: var(--main-app-hover);
+}
+
 .signUpLink {
     text-align: center;
     cursor: pointer;
