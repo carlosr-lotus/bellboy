@@ -77,7 +77,7 @@ export default function Home() {
             tabIndex === 0 &&
               <>
                 <h3>Forgot password?</h3>
-                <p>We will send a code to your email in order reset your password.</p>
+                <p>We will send a code to your email in order to reset your password.</p>
                 <InputField name="email" type="text" placeholder="Your account email" register={() => {}} />
                 <Button className={styles.buttonNext} name="Send" type="button" onClick={() => setTabIndex(1)}/>
               </>
