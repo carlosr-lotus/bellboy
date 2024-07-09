@@ -1,0 +1,40 @@
+.modal {
+    padding: 1.2rem;
+    width: 90%;
+    height: auto;
+    border-radius: .4rem;
+    background-color: #fff;
+    place-self: center;
+    display: grid;
+    animation: fadeIn .2s;
+}
+
+.modal > i {
+    border-radius: .4rem;
+    border: .1rem solid lightgrey;
+    display: flex;
+
+    place-self: end;
+    cursor: pointer;
+}
+
+.children {
+    display: grid;
+    gap: 1.2rem;
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (min-width: 425px) {
+    .modal {
+        width: 40rem;
+    }
+}
