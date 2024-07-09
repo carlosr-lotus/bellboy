@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import styles from "@/styles/material/Select.module.css";
 
-type SelectOption = {
+export type SelectOption = {
   label: string;
   value: number;
 };
@@ -44,7 +44,7 @@ export default function Select({
       onClick={() => setIsOpen((prev) => !prev)}
       className={styles.selectContainer}
     >
-      <span className={styles.value}>{value?.label}</span>
+      <span className={styles.value}>{value?.label ?? 'Select...'}</span>
 
       <button
         onClick={(e) => {
