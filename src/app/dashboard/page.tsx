@@ -41,7 +41,7 @@ export default function DashboardPage() {
 
       <div className={styles.dashboardContainer}>
         <DashboardHeader />
-        <DashSectionTitle />
+        <DashSectionTitle title="Services" />
 
         <div className={styles.services}>
           {services &&
