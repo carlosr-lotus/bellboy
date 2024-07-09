@@ -6,6 +6,21 @@
     padding: 2rem;
     display: grid;
     gap: 2rem;
+
+    animation: FormLeftToCenter .5s;
+}
+
+.signUpForm {
+    animation: FormLeftToCenter .5s;
+}
+
+@keyframes FormLeftToCenter {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 .inputContainer {
