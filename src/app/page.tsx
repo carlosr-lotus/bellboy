@@ -29,18 +29,16 @@ export default function Home() {
 
   function logIn({ email, password }: LogInT) {
     setIsLoading(true);
-    setTimeout(() =>
-      api.get(`/users?email=${email}&password=${password}`)
-        .then((res: AxiosResponse<LogInT[]>) => {
-          if (res.data.length > 1) {
-            console.log('User exists!')
-          }
-          setIsLoading(false);
-        }).catch((err) => {
-          setIsLoading(false);
-        })
-      , 2500);
-
+    
+    api.get(`/login?email=${email}&password=${password}`)
+      .then((res: AxiosResponse<LogInT[]>) => {
+      if (res.data.length > 1) {
+        console.log('User exists!')
+      }
+      setIsLoading(false);
+    }).catch((err) => {
+      setIsLoading(false);
+    })
   }
 
   return (
