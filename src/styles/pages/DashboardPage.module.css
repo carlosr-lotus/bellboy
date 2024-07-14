@@ -6,6 +6,56 @@
     grid-template-columns: 20% 80%;
 }
 
+.notificationContainer {
+    position: relative;
+}
+
+.notificationContainer>svg {
+    cursor: pointer;
+}
+
+.notificationContainer>svg:hover {
+    animation: notificationRing .7s linear;
+}
+
+.notificationContainer>svg:hover .newNotificationCircle {
+    animation: notificationRing .7s linear;
+}
+
+.newNotificationCircle {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+
+    width: .7rem;
+    height: .7rem;
+    border-radius: 100%;
+    background-color: red;
+}
+
+@keyframes notificationRing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(40deg);
+    }
+
+    50% {
+        transform: rotate(-40deg);
+    }
+
+    75% {
+        transform: rotate(20deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
 .dashboardContainer {
     padding: 2rem;
 
