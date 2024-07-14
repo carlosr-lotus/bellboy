@@ -47,13 +47,13 @@ export default function Home() {
     setIsLoading(true);
     
     api.get(`/login/auth?email=${email}&password=${password}`)
-      .then((res: AxiosResponse<{message: boolean}>) => {
-      if (res.data.message) {
-        console.log('User exists!')
+      .then((res: AxiosResponse<{ res: boolean, message: string }>) => {
+      if (res.data.res) {
         router.push('/dashboard')
       }
       setIsLoading(false);
     }).catch((err) => {
+      console.log('User authentication failed.')
       setIsLoading(false);
     })
   }
