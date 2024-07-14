@@ -1,5 +1,6 @@
 "use client";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 // Packages
 import { useForm } from "react-hook-form";
@@ -36,6 +37,7 @@ type ForgotPassword = {
 export default function Home() {
   const { register, handleSubmit } = useForm<LogInT>();
   const api = getApi();
+  const router = useRouter()
 
   const [isLoading, setIsLoading] = useState(false);
   const [screen, setScreen] = useState<'logIn' | 'signUp'>('logIn');
@@ -44,10 +46,11 @@ export default function Home() {
   function logIn({ email, password }: LogInT) {
     setIsLoading(true);
     
-    api.get(`/login?email=${email}&password=${password}`)
-      .then((res: AxiosResponse<LogInT[]>) => {
-      if (res.data.length > 1) {
+    api.get(`/login/auth?email=${email}&password=${password}`)
+      .then((res: AxiosResponse<{message: boolean}>) => {
+      if (res.data.message) {
         console.log('User exists!')
+        router.push('/dashboard')
       }
       setIsLoading(false);
     }).catch((err) => {
@@ -123,23 +126,35 @@ export default function Home() {
     } = useForm<SignUpT>()
 
     const [country, setCountry] = useState<SelectOption>()
-    const [countries, setCountries] = useState<SelectOption[]>([
-      { value: 1, label: 'Brazil'}, 
-      { value: 2, label: 'United States' }
-    ])
+    const [countries, setCountries] = useState<SelectOption[]>([])
+
+    function getCountries(): void {
+      api.get('/countries').then((res: AxiosResponse<SelectOption[]>) => setCountries(res.data))
+    }
 
     function SignUp({ name, email, password }: SignUpT) {
-      api.post('/login/create', {
-        name: name,
-        email: email,
-        password: password,
-        country: country?.value
+      setIsLoading(true)
+      
+      api.post('/login/create', null, { 
+        params: {
+          name: name,
+          email: email,
+          password: password,
+          country: country?.value,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          createdAt: new Date().toISOString()
+        }
       }).then((res) => {
-        console.log(res)
+        setIsLoading(false)
+        setScreen('logIn')
       }).catch((err) => {
-        console.log(err)
+        setIsLoading(false)
       })
     }
+
+    useEffect(() => {
+      getCountries()
+    }, [])
 
     return (
       <form className={`${styles.form} ${styles.signUpForm}`} onSubmit={handleSignUp(SignUp)}>
