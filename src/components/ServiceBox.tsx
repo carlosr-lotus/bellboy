@@ -2,7 +2,6 @@ import styles from '@/styles/components/ServiceBox.module.css'
 
 export type ServiceProps = {
     id: number,
-    icon: string,
     name: string,
     color: string
     status: boolean
