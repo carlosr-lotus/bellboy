@@ -1,6 +1,9 @@
 "use client";
 import { Fragment, useEffect, useState } from "react";
 
+// Packages
+import { AxiosResponse } from "axios";
+
 // Components
 import Sidebar from "@/components/Sidebar";
 import Button from "@/material/Button"
@@ -31,19 +34,19 @@ export default function DashboardPage() {
   const [services, setServices] = useState<ServiceProps[]>([]);
   const [addService, setAddService] = useState(false);
 
-  // function getServices(): void {
-  //   api.get('/services')
-  //     .then((res) => {
-  //       setServices(res.data);
-  //       console.log(res.data);
-  //     }).catch((err) => {
-  //       console.log(err);
-  //     })
-  // }
+  function getUserServices(): void {
+    api.get(`/services/user?email=${''}`)
+      .then((res: AxiosResponse<ServiceProps[]>) => {
+        setServices(res.data);
+        console.log(res.data);
+      }).catch((err) => {
+        console.log(err);
+      })
+  }
 
-  // useEffect(() => {
-  //   getServices();
-  // }, []);
+  useEffect(() => {
+    getUserServices();
+  }, []);
 
   const AddService = () => {
 
@@ -105,7 +108,7 @@ export default function DashboardPage() {
         
           <DashboardHeader>
              <Button
-                name="Adicionar"
+                name="Add"
                 type="button"
                 onClick={() => setAddService(true)}
             />
@@ -125,7 +128,6 @@ export default function DashboardPage() {
                 <Fragment key={service.id}>
                   <ServiceBox
                     id={service.id}
-                    icon=""
                     name={service.name}
                     color={service.color}
                     status={service.status}
