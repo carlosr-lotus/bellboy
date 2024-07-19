@@ -15,6 +15,7 @@ import Modal from "@/material/Modal";
 import Select, { SelectOption } from "@/material/Select";
 import ProfileIcon from "@/components/ProfileIcon";
 import InputField from "@/material/InputField";
+import Details from "@/components/Details";
 
 // Types
 import { ServiceProps } from "@/components/ServiceBox";
@@ -35,7 +36,7 @@ export default function DashboardPage() {
   const [addService, setAddService] = useState(false);
 
   function getUserServices(): void {
-    api.get(`/services/user?email=${''}`)
+    api.get(`/services/user?email=${'client@email.com'}`)
       .then((res: AxiosResponse<ServiceProps[]>) => {
         setServices(res.data);
         console.log(res.data);
@@ -135,6 +136,10 @@ export default function DashboardPage() {
                 </Fragment>
             ))}
           </div>
+
+          <DashSectionTitle title="Details" />
+
+          <Details />
         </div>
       </main>
     </> 

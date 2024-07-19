@@ -1,0 +1,22 @@
+.details {
+    width: fit-content;
+    display: grid;
+    gap: 1rem;
+}
+
+.details div {
+    width: 20rem;
+    padding: 2rem;
+    background-color: var(--dark-background);
+    border-radius: 1rem;
+    font-size: 1.2rem;
+
+    display: grid;
+    gap: 1rem;
+    /* display: grid;
+    grid-template-columns: repeat(2, max-content) 1fr;
+    align-items: center;
+    grid-gap: 1rem;
+    gap: 1rem;  */
+}
+
