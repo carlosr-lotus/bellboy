@@ -53,7 +53,6 @@ export default function Home() {
       }
       setIsLoading(false);
     }).catch((err) => {
-      console.log('User authentication failed.')
       setIsLoading(false);
     })
   }

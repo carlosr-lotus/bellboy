@@ -61,7 +61,7 @@ export default function Select({
       <div className={styles.caret}></div>
 
       <ul className={`${styles.options} ${isOpen ? styles.show : ""}`}>
-        {options.map((option, index) => (
+        {options.length >= 1 ? options.map((option, index) => (
           <li
             onClick={(e) => {
               e.stopPropagation();
@@ -78,7 +78,9 @@ export default function Select({
           >
             {option.label}
           </li>
-        ))}
+        )) :
+			<li className={styles.noOption}>No options.</li>
+		}
       </ul>
     </div>
   );

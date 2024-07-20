@@ -84,11 +84,17 @@
     display: block;
 }
 
-.option {
+.option, .noOption {
     padding: 1rem 1.2rem;
     text-align: left;
     font-size: 1.3rem;
     cursor: pointer;
+}
+
+.noOption {
+	color: var(--link-background);
+	text-align: center;
+	cursor: default;
 }
 
 .selected {
